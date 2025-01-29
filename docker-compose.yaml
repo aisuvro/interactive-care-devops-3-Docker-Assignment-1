@@ -1,9 +1,7 @@
 services:
   vuejs-frontend:
-    # Build the Vue.js project using the specified Dockerfile
-    build:
-      context: .
-      dockerfile: Dockerfile
+    # Use prebuilt Docker Hub image
+    image: aisuvro/interactive-care-devops-3-docker-assignment-1:v1
     container_name: vuejs-frontend-container
     ports:
       - "8090:80"  # Map port 8090 on the host to port 80 inside the container
@@ -24,9 +22,6 @@ services:
         limits:
           cpus: "0.50"  # Limit to 50% of a single CPU
           memory: "512M" # Limit memory usage to 512MB
-
-    security_opt:
-      - no-new-privileges:true  # Prevent privilege escalation
 
   backend-api:
     # Example backend service (replace with your actual backend image or Dockerfile)
