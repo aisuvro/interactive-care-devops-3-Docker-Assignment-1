@@ -1,0 +1,62 @@
+services:
+  vuejs-frontend:
+    # Build the Vue.js project using the specified Dockerfile
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vuejs-frontend-container
+    ports:
+      - "8090:80"  # Map port 8090 on the host to port 80 inside the container
+    networks:
+      - app-network
+    depends_on:
+      - backend-api
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: curl -f http://localhost || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 2
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.50"  # Limit to 50% of a single CPU
+          memory: "512M" # Limit memory usage to 512MB
+
+    security_opt:
+      - no-new-privileges:true  # Prevent privilege escalation
+
+  backend-api:
+    # Example backend service (replace with your actual backend image or Dockerfile)
+    image: node:16-alpine
+    container_name: backend-api-container
+    command: [ "node", "server.js" ]  # Example command, update as per your backend project
+    working_dir: /app
+    volumes:
+      - ./api:/app
+    networks:
+      - app-network
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - API_PORT=3000  # Port for the backend API service
+    healthcheck:
+      test: curl -f http://localhost:3000 || exit 1
+      interval: 10s
+      timeout: 10s
+      retries: 2
+    restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "0.75"  # Limit to 75% of a single CPU
+          memory: "1G"  # Limit memory usage to 1GB
+    security_opt:
+      - no-new-privileges:true  # Prevent privilege escalation
+
+networks:
+  app-network:
+    driver: bridge
