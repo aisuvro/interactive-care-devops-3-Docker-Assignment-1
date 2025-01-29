@@ -49,8 +49,6 @@ services:
         limits:
           cpus: "0.75"  # Limit to 75% of a single CPU
           memory: "1G"  # Limit memory usage to 1GB
-    security_opt:
-      - no-new-privileges:true  # Prevent privilege escalation
 
 networks:
   app-network:

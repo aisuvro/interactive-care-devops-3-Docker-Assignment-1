@@ -1,20 +1,15 @@
 # Vuejs & TailwindCSS Portfolio - With Dark Mode
 
 ## Docker info
- In the above configuration, we have defined two services:  vuejs-frontend  and  backend-api . The  vuejs-frontend  service is built using the  Dockerfile  in the current directory. The  backend-api  service uses the  node:16-alpine  image and runs the  server.js  script. 
-  The  vuejs-frontend  service is exposed on port 8090 on the host machine and is connected to the  backend-api  service. The  backend-api  service is exposed on port 3000 on the host machine. 
-  The  healthcheck  section is used to define a health check for each service. The  deploy  section is used to define resource limits for each service. 
-  To start the services, run the following command: 
-  docker-compose up
-  
-  This will build the Vue.js frontend and start the services. You can access the Vue.js frontend at  http://localhost:8090  and the backend API at  http://localhost:3000 . 
-  Conclusion 
-  In this article, we have discussed how to deploy a Vue.js application using Docker. We have covered how to create a Dockerfile for a Vue.js application, build the Docker image, and run the Docker container. We have also discussed how to use Docker Compose to deploy a Vue.js application along with a backend API. 
-  To learn more about Docker, check out our  Docker topic page. 
-  Is there a way to run the Vue.js application in development mode using Docker? 
-  Yes, you can run a Vue.js application in development mode using Docker. To do this, you can use the  docker-compose  command to run the Vue.js application in development mode. 
-  Here is an example  docker-compose.yaml  file that runs a Vue.js application in development mode: 
-  version: '3.8'
+- Two services defined: `vuejs-frontend` and `backend-api`.
+- `vuejs-frontend` built using the `Dockerfile` in the current directory.
+- `backend-api` uses `node:16-alpine` image and runs `server.js`.
+- `vuejs-frontend` exposed on port 8090, connected to `backend-api`.
+- `backend-api` exposed on port 3000.
+- Health checks and resource limits defined for each service.
+- Start services with `docker-compose up`.
+- Access Vue.js frontend at `http://localhost:8090`.
+
 
 A simple portfolio starter theme built with Vue.js v3, Composition API and Tailwind CSS v3.
 
