@@ -1,5 +1,16 @@
 # Vuejs & TailwindCSS Portfolio - With Dark Mode
 
+## Docker info
+- Two services defined: `vuejs-frontend` and `backend-api`.
+- `vuejs-frontend` built using the `Dockerfile` in the current directory.
+- `backend-api` uses `node:16-alpine` image and runs `server.js`.
+- `vuejs-frontend` exposed on port 8090, connected to `backend-api`.
+- `backend-api` exposed on port 3000.
+- Health checks and resource limits defined for each service.
+- Start services with `docker-compose up`.
+- Access Vue.js frontend at `http://localhost:8090`.
+
+
 A simple portfolio starter theme built with Vue.js v3, Composition API and Tailwind CSS v3.
 
 ![Vuejs-TailwindCSS-Portfolio](https://user-images.githubusercontent.com/16396664/140909796-815239e4-a986-46ad-bbd0-4b166127bbb8.JPG)
